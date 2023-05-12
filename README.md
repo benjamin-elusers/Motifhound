@@ -5,14 +5,13 @@
 
 ## Cite us
 
-Kelil A, Dubreuil B, Levy ED, Michnick SW (2014) 
-Fast and Accurate Discovery of Degenerate Linear Motifs in Protein Sequences. 
-PLOS ONE 9(9): e106081. https://doi.org/10.1371/journal.pone.0106081
+>Kelil A, Dubreuil B, Levy ED, Michnick SW (2014) 
+>Fast and Accurate Discovery of Degenerate Linear Motifs in Protein Sequences. 
+>PLOS ONE 9(9): e106081. https://doi.org/10.1371/journal.pone.0106081
 
 ## Abstract
 
 Linear motifs mediate a wide variety of cellular functions, which makes their characterization in protein sequences crucial to understanding cellular systems. However, the short length and degenerate nature of linear motifs make their discovery a difficult problem. Here, we introduce MotifHound, an algorithm particularly suited for the discovery of small and degenerate linear motifs. MotifHound performs an exact and exhaustive enumeration of all motifs present in proteins of interest, including all of their degenerate forms, and scores the overrepresentation of each motif based on its occurrence in proteins of interest relative to a background (e.g., proteome) using the hypergeometric distribution. To assess MotifHound, we benchmarked it together with state-of-the-art algorithms. The benchmark consists of 11,880 sets of proteins from S. cerevisiae; in each set, we artificially spiked-in one motif varying in terms of three key parameters, (i) number of occurrences, (ii) length and (iii) the number of degenerate or “wildcard” positions. The benchmark enabled the evaluation of the impact of these three properties on the performance of the different algorithms. The results showed that MotifHound and SLiMFinder were the most accurate in detecting degenerate linear motifs. Interestingly, MotifHound was 15 to 20 times faster at comparable accuracy and performed best in the discovery of highly degenerate motifs. We complemented the benchmark by an analysis of proteins experimentally shown to bind the FUS1 SH3 domain from S. cerevisiae. Using the full-length protein partners as sole information, MotifHound recapitulated most experimentally determined motifs binding to the FUS1 SH3 domain. Moreover, these motifs exhibited properties typical of SH3 binding peptides, e.g., high intrinsic disorder and evolutionary conservation, despite the fact that none of these properties were used as prior information. MotifHound is available (http://michnick.bcm.umontreal.ca or http://tinyurl.com/motifhound) together with the benchmark that can be used as a reference to assess future developments in motif discovery.
-
 
 ## Summary
 
@@ -89,13 +88,17 @@ We benchmarked MotifHound by creating datasets of protein sequences from S. cere
 
 ## Parallel version
 
-DALEL is a more recent algorithm based on the same principles as MotifHound. DALEL can be tested online as a [webserver](http://michnick.bcm.umontreal.ca/dalel/Server/Index.aspx).
-The source code is also available 
+DALEL is a more recent algorithm based on the same principles as MotifHound. 
+DALEL can be tested online as a [webserver](http://michnick.bcm.umontreal.ca/dalel/Server/Index.aspx).
+The source code is also available for Windows.
+
+It can also be adapted if you have a negative and positive sets of sequence.
+DALEL inspects degenerate positions to find the combination of most frequent amino-acids.
 
 To cite DALEL:
-Kelil A, Dubreuil B, Levy ED, Michnick SW. 
-Exhaustive search of linear information encoding protein-peptide recognition. 
-PLoS Comput Biol. 2017 Apr 20;13(4):e1005499. doi: 10.1371/journal.pcbi.1005499. PMID: 28426660; PMCID: PMC5417721.
+>Kelil A, Dubreuil B, Levy ED, Michnick SW. 
+>Exhaustive search of linear information encoding protein-peptide recognition. 
+>PLoS Comput Biol. 2017 Apr 20;13(4):e1005499. doi: 10.1371/journal.pcbi.1005499. PMID: 28426660; PMCID: PMC5417721.
 
 ## License
 
@@ -109,7 +112,7 @@ We would like to thank all contributors and users of MotifHound. Your feedback a
 
 If you have questions, feature requests, or bug reports, please open an issue on our [GitHub issue tracker](https://github.com/benjamin-elusers/MotifHound/issues). 
 
-For other inquiries, feel free to contact us at: `username@domain.com`.
+For other inquiries, feel free to contact us at: `benjamin.dubreuil@weizmann.ac.il`.
 
 ---
 
