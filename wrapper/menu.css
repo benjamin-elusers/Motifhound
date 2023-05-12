@@ -1,0 +1,649 @@
+.logo
+{
+    background-color:black;
+    text-align:center;
+    
+    height:940px;
+    width:200px;
+    
+    position:absolute;
+    top:0px;
+    left:0px;
+
+    /*margin-left:13px;
+    margin-top:13px;*/
+
+    /*border-color:black;
+    border-left-style:solid;
+    border-top-style:solid;*/
+
+    background-image:url('./puce_logo/logo.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.logo2
+{
+    background-color:black;
+    text-align:center;
+    
+    height:1086px;
+    width:201px;
+    
+    position:absolute;
+    top:0px;
+    left:0px;
+
+    /*margin-left:13px;
+    margin-top:13px;*/
+
+    /*border-color:black;
+    border-left-style:solid;
+    border-top-style:solid;*/
+
+    background-image:url('./puce_logo/logo.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+body>.menu {position:fixed}
+
+.query{
+	background-image:url('./image/Background_Black.jpg'); 
+	background-repeat:no-repeat;
+	background-position: center top;
+	z-index:1;
+	
+	height:130px;
+	width:576px;
+
+	position:absolute;
+	top:90px;
+	left:203px;
+	
+	padding-top:10px;
+
+	text-align:left;
+	text-indent:15px;
+	font-size:medium;
+	opacity : 0.8;
+	color:white;
+
+	border-color:white;
+	border-left-style:solid;
+	border-bottom-style:solid;
+	border-top-style:solid;
+	border-right-style:solid;
+	
+	overflow:auto;
+}
+
+.display{
+	background-image:url('./image/Background_Black.jpg'); 
+	background-repeat:no-repeat;
+	background-position: center top;
+	z-index:1;
+	
+	height:130px;
+	width:560px;
+
+	position:absolute;
+	left:783px;
+	top:90px;
+	
+	padding-top:10px;
+
+	text-align:left;
+	text-indent:15px;
+	font-size:medium;
+	color:#999999;
+
+	border-color:white;
+	border-left-style:solid;
+	border-bottom-style:solid;
+	border-top-style:solid;
+	border-right-style:solid;
+	
+	overflow:auto;
+}
+
+.menu
+{
+    background-color:black;
+    text-align:left;
+    font-size:16pt;
+    color:white;
+
+    position:absolute;
+    top:80px;
+    
+    overflow:auto;
+}
+
+.titre
+{
+    text-align:center;
+    font-size:xx-large;
+    color:black;
+    
+    height:30px;
+    width:1700px;
+    
+    position:absolute;
+    top:0px;
+    left:20px;
+    right:20px;
+}
+
+.titre2
+{
+    background-color:black;
+    text-align:center;
+    font-size:xx-large;
+    color:white;
+    
+    height:69px;
+    width:1150px;
+    
+    position:absolute;
+    top:0px;
+    left:200px;
+    
+    padding-top:20px;
+}
+
+.contenu
+{
+/*    background-image: url('/home/benjamin/Desktop/WORK_Benjamin/LINEAR_MOTIF/Real_de_novo_discovery/image/background.jpg');*/
+/*    background-color:#cccccc;*/
+/*    background-repeat:repeat;*/
+    text-align:left;
+
+/*    height:589px;    */
+/*    width:995px;    */
+/*    height:1000px;    */
+
+    position:absolute;    
+    top:50px;    
+    left:20px;    
+    right:20px;    
+    bottom:35px;    
+    overflow:auto;
+}
+
+.footer {
+	position: relative;
+	margin-top: -50px; /* negative value of footer height */
+	height: 50px;
+	clear:both;
+} 
+
+
+.contenu2
+{
+    text-align:center;
+
+    height: 30px;
+    width: 1700px;
+
+    position:absolute;
+    left:20px;    
+    right:20px;    
+    bottom:-10px;    
+    overflow:auto;
+}
+
+.contenu3
+{
+    background-image:url('./image/Background_Black.jpg'); 
+    background-repeat:no-repeat;
+    background-position: center top;
+    text-align:left;
+    
+    height:849px;
+    width:1148px;
+    
+    position:absolute;
+    top:237px;
+    left:201px;
+
+    overflow:auto;
+}
+
+
+
+.cell-en-tete1
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align: middle;
+    width:30px;
+    height:35px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+.cell-en-tete2
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align:middle;
+    width:115px;
+    height:35px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+.cell-en-tete3
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align:middle;
+    width:100px;
+    height:35px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+.cell-en-tete4
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align:middle;
+    width:130px;
+    height:35px;
+    
+    overflow:hidden;
+    
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+.cell-en-tete5
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align:middle;
+    width:95px;
+    height:35px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+
+.cell-en-tete6
+{
+    background-color:#666666;
+    text-align:center;
+    vertical-align:middle;
+    width:475px;
+    height:35px;
+    
+    overflow:hidden;
+    
+    border-width: thin;
+    padding: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+
+}
+
+.display-cell1
+{
+    text-align:center;
+    vertical-align:middle;
+    width:30px;
+    height:65px;
+    overflow:hidden;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+
+.display-cell2
+{
+    text-align:center;
+    vertical-align:middle;
+    width:115px;
+    height:65px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+.display-cell3
+{
+    text-align:center;
+    vertical-align:middle;
+    width:100px;
+    height:65px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+.display-cell4
+{
+    text-align:center;
+    vertical-align:middle;
+    width:130px;
+    height:65px;
+    
+    overflow:auto;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+.display-cell5
+{
+    text-align:center;
+    vertical-align:middle;
+    width:95px;
+    height:65px;
+    
+    overflow:hidden;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+.display-cell6
+{
+    width:475px;
+    height:65px;
+    
+    overflow:auto;
+
+    border-width: thin;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: dashed;
+    border-color: #999999;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+
+
+.EvoRate {
+    display: table-cell;
+    width: 232px;
+    height: 32px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table.motiftable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+
+table.motiftable th {
+	border-width: 1px;
+	padding: 2px;
+	width:7px;
+	height:5px;
+	text-align: center;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+
+table.motiftable td {
+	vertical-align: middle;
+	text-align: center;
+	width:8px;
+	height:5px;
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+h1.center,h2.center,h3.center,h4.center
+{
+	text-align:center;
+}
+
+p.justify
+{ 
+    text-align:justify;
+    text-indent:30px;
+    margin-right:30px;
+    margin-left:30px;
+}
+
+p.left
+{ 
+    text-align:left;
+}
+
+/* legende des images de classes imageCon */
+p.legende
+{
+    text-align:center;
+    text-decoration:underline;
+    font-style:italic;
+    font-weight:bold;
+}
+
+a:link, a:visited, a:active
+{
+    color:blue;
+}
+
+a.lien
+{
+    color:white;
+}
+
+.menuListe
+{
+    background-color:black;
+    
+    visibility:hidden;
+    display:none;
+}
+
+/* ligne de la liste principale */
+li.espace
+{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+/* le carre noire */
+.bloqueOri
+{
+    visibility:hidden;
+    display:none;
+    
+    background-color:black;
+    
+    position:absolute;
+    top:50px;
+    left:50px;
+    z-index:2;
+    
+    height:700px;
+    width:1170px;
+}
+
+/* position de l'image dans le carre noire */
+img.imageOri
+{
+    position:absolute;
+    top:50px;
+    left:292px;
+    
+    height:600px;
+    width:585px;
+}
+
+/* taille des miniatures */
+img.imageMod
+{
+    height:204px;
+    width:204px;
+}
+
+/* image centre dans le texte */
+img.imageCon
+{
+    display: block;
+    margin-left:auto;
+    margin-right:auto; 
+}
+
+.imageD
+{
+    float:right;
+    /*margin-right-width:20;*/
+    margin-right:30px;
+    margin-left:30px;
+    padding-top:10px;
+
+    height:320px;
+    width:450px;
+
+    text-align:center;
+    
+    font-style:italic;
+    font-size:small;
+    font-family:verdana;
+    color:black;   
+}
+
+.imageG
+{
+    float:left;
+    /*margin-right-width:20px;*/
+    margin-right:20px;
+    margin-left:20px;
+    padding-top:10px;
+
+    height:320px;
+    width:410px;
+
+    text-align:center;
+    
+    font-style:italic;
+    font-size:small;
+    font-family:verdana;
+    color:black;   
+}
+
+/* pour mettre au centre */
+.centre
+{
+    text-align:center;
+}
+
+/* bouton fermer */
+.fer
+{
+    position:absolute;
+    top:660px;
+    left:550px;
+}
+
+td.droite
+{
+    text-align:right;
+}
+
+p.remonter
+{
+    text-align:center;
+    padding-top:10px;
+}
+
+.marge
+{
+    margin-left: 8em;
+}
+
+p.entree
+{
+    color:red;
+    text-align:center;
+    font-style:italic;
+    font-size:20pt;
+    font-family:"Brush Script MT";
+}
+
+img.entree
+{
+    height:540px;
+    width:1120px;
+    border:0;
+}
