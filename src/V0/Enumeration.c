@@ -1,26 +1,26 @@
 /* +------------------------------------------------------------+ */
-/* |  Date		: 16/05/2011																		  | */
-/* |  Last Update : 16/05/2023																  | */
-/* |  Author : B. Dubreuil																		  | */
-/* |  Contact		 : dubreuil.benjamin@hotmail.com						   | */
+/* |  Date		    : 16/05/2011                                  | */
+/* |  Last Update : 28/05/2023                                  | */
+/* |  Author      : B. Dubreuil                                 | */
+/* |  Contact		  : dubreuil.benjamin@hotmail.com               | */
 /* |  Affiliation : Michnik lab - Université de Montréal (UDEM) | */
 /* |  Centre de Bioinformatique et Genomique Robert Cedergren   | */
 /* +------------------------------------------------------------+ */
 /*============================================================================================*/
-/*##		 ##  #######  ######## #### ######## ##		 ##  #######  ##		 ## ##		## ########  */
-/*###   ### ##		 ##		##		 ##  ##		   ##		 ## ##		 ## ##		 ## ###   ## ##		 ## */
-/*#### #### ##		 ##		##		 ##  ##		   ##		 ## ##		 ## ##		 ## ####  ## ##		 ## */
-/*## ### ## ##		 ##		##		 ##  ######   ######### ##		 ## ##		 ## ## ## ## ##		 ## */
-/*##		 ## ##		 ##		##		 ##  ##		   ##		 ## ##		 ## ##		 ## ##  #### ##		 ## */
-/*##		 ## ##		 ##		##		 ##  ##		   ##		 ## ##		 ## ##		 ## ##   ### ##		 ## */
-/*##		 ##  #######		 ##		#### ##		   ##		 ##  #######   #######  ##		## ########  */
-/*																   Motif Enumeration																				*/
+/*##     ##  #######  ######## #### ######## ##     ##  #######  ##     ## ##    ## ########  */
+/*###   ### ##     ##    ##     ##  ##       ##     ## ##     ## ##     ## ###   ## ##     ## */
+/*#### #### ##     ##    ##     ##  ##       ##     ## ##     ## ##     ## ####  ## ##     ## */
+/*## ### ## ##     ##    ##     ##  ######   ######### ##     ## ##     ## ## ## ## ##     ## */
+/*##     ## ##     ##    ##     ##  ##       ##     ## ##     ## ##     ## ##  #### ##     ## */
+/*##     ## ##     ##    ##     ##  ##       ##     ## ##     ## ##     ## ##   ### ##     ## */
+/*##     ##  #######     ##    #### ##       ##     ##  #######   #######  ##    ## ########  */
+/*                                     Motif Enumeration                                      */
 /*============================================================================================*/
 /* Loads FASTA fromatted sequences from a file */
 /* Enumerate sequence motifs with user input on (i) specific length (ii) number of wildcards (iii) minimum occurrence per motif */
 
 /* Compile the following script */
-/* gcc -Wall -ansi -pedantic -g Enumeration.c -o Enumeration.exe -lm -lJudy -lfasta -lsafealloc -lmotif -lpthread */ 
+/* gcc  Enumeration.c safealloc.c fasta.c motif.c -o Enumeration.exe -lm -lJudy -lpthread */ 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,104 +53,12 @@ typedef struct {
 } OptionValues;
 
 
-int		binomial(int,int);	/*	Calculate binomial coefficient for large numbers */
-void	Enumeration (int, char **, int, int, char, char, SEQUENCES *, int,FILE *);
-void Enumeration (int len, char **masks, int NC, int K_OCC, char firstletter, char lastletter, SEQUENCES * sequences, int nseq,  FILE * OUT){
+void printUsage (); /* Print the usage of the program listing all the options */
+int  checkOptionValues (const struct option*, OptionValues *); /* Validate option values */
+int  sumArray (const int, int); /*	Calculate sum of values in an integer array */
+int	 binomial (int, int);	/*	Calculate binomial coefficient for large numbers */
+void Enumeration (int, char **, int, int, char, char, SEQUENCES *, int,FILE *);
 
-	int k=0; int pos=0; int s=0; 
-
-	char* motif = NULL;
-	char ** all_motifs = NULL; 
-
-	Pvoid_t   occArray = (PWord_t)NULL;  /* Judy array. */
-	Pvoid_t   seqArray = (PWord_t)NULL;  /* Judy array. */
-	Pvoid_t   tmpArray = (PWord_t)NULL;  /* Judy array. */
-
-	PWord_t   occ;				 /* Judy array element. */
-	PWord_t   seq;				 /* Judy array element. */
-	PWord_t   tmp;				 /* Judy array element. */
-
-	Word_t		Rc_word;				 /* size of JudySL array. */
-	for(s=0;s<nseq;s++){
-		for(pos=0;pos<sequences[s]->length-len-1;pos++){
-			if(sequences[s]->sequence[pos] == firstletter && sequences[s]->sequence[pos+len-1] ==  lastletter){
-				motif = CopyString(sequences[s]->sequence+pos,len);
-				if(VerifyX(motif,len) == 0){
-					all_motifs = DegenerateMotif(masks,motif,len,NC);
-					for(k=0;k<NC;k++){
-						strcpy((char *)(Index),all_motifs[k]); Index[len]='\0';
-						JSLG(tmp,tmpArray,Index); JSLG(occ,occArray,Index); JSLG(seq,seqArray,Index);
-						if(tmp != NULL ){
-							(*tmp)++; (*occ)++;
-						}else{
-							if(occ != NULL && seq != NULL){
-								(*occ)++; (*seq)++; 
-							}else{
-								JSLI(seq, seqArray, Index);   /* store string into array */
-								(*seq)++;
-								JSLI(occ, occArray,Index);   /* store string into array */
-								(*occ)++; 
-							}
-							JSLI(tmp, tmpArray,Index);   /* store string into array */
-							(*tmp)++;
-						}
-						safefree((void**)&all_motifs[k]); 		/* free array */
-					}
-					safefree((void**)&motif);
-					safefree((void**)&all_motifs); 		/* free array */
-				}
-			}
-		}
-		JSLFA(Rc_word, tmpArray);
-	}
-
-	/* Prints the motifs sorted lexicographically */
-	Index[0] = '\0';
-	JSLF(seq, seqArray, Index);	/* get first string */
-	while (seq != NULL) {
-		JSLG(occ, occArray, Index);	/* get first string */
-		if(occ != NULL) {
-			if((int)(*seq) >= K_OCC){
-				/*fprintf(stderr,"%s\t%d\t%d\n", Index,(int)(*occ),(int)(*seq));*/
-				fprintf(OUT,"%s\t%d\t%d\n", Index,(int)(*occ),(int)(*seq));
-			}
-		}
-		JSLN(seq, seqArray, Index);   /* get next string */
-	}
-	JSLFA(Rc_word, seqArray);		/* free array */
-	JSLFA(Rc_word, occArray);		/* free array */
-}
-
-
-/*Sum integer values in an array*/
-int sumArray(const int *array, int length) {
-    int sum = 0;
-    for (int i = 0; i < length; i++) {
-        sum += array[i];
-    }
-    return sum;
-}
-
-
-/*Binomial coefficient for large numbers*/
-int binomial(int n,int k){
-	int r = 1;
-	int d = n - k;
-	/* choose the smaller of k and n - k */
-	if (d > k) {
-		k = d; 
-		d = n - k;
-	}
-
-	while (n > k) {
-		r *= n--;
-		/* divide (n - k)! as soon as we can to delay overflows */
-		while (d > 1 && !(r % d)){
-			r /= d--;
-		}
-	}
-	return r;
-}
 
 void printUsage() {
 	printf("Usage: Enumeration.exe -f <fastafile> -o <output> -m <mlen> -k <kmin> [-x1 <xmin>] [-x2 <xmax>] [-a <seqtype>]\n");
@@ -225,6 +133,105 @@ int checkOptionValues(const struct option* long_options,OptionValues *options_va
 	return 0;
 }
 
+
+/*Sum integer values in an array*/
+int sumArray(const int *array, int length) {
+    int sum = 0;
+    for (int i = 0; i < length; i++) {
+        sum += array[i];
+    }
+    return sum;
+}
+
+
+/*Binomial coefficient for large numbers*/
+int binomial(int n,int k){
+	int r = 1;
+	int d = n - k;
+	/* choose the smaller of k and n - k */
+	if (d > k) {
+		k = d; 
+		d = n - k;
+	}
+
+	while (n > k) {
+		r *= n--;
+		/* divide (n - k)! as soon as we can to delay overflows */
+		while (d > 1 && !(r % d)){
+			r /= d--;
+		}
+	}
+	return r;
+}
+
+
+
+
+void Enumeration (int len, char **masks, int NC, int K_OCC, char firstletter, char lastletter, SEQUENCES * sequences, int nseq,  FILE * OUT){
+
+	int k=0; int pos=0; int s=0; 
+
+	char* motif = NULL;
+	char ** all_motifs = NULL; 
+
+	Pvoid_t   occArray = (PWord_t)NULL;  /* Judy array. */
+	Pvoid_t   seqArray = (PWord_t)NULL;  /* Judy array. */
+	Pvoid_t   tmpArray = (PWord_t)NULL;  /* Judy array. */
+
+	PWord_t   occ;				 /* Judy array element. */
+	PWord_t   seq;				 /* Judy array element. */
+	PWord_t   tmp;				 /* Judy array element. */
+
+	Word_t		Rc_word;				 /* size of JudySL array. */
+	for(s=0;s<nseq;s++){
+		for(pos=0;pos<sequences[s]->length-len-1;pos++){
+			if(sequences[s]->sequence[pos] == firstletter && sequences[s]->sequence[pos+len-1] ==  lastletter){
+				motif = CopyString(sequences[s]->sequence+pos,len);
+				if(VerifyX(motif,len) == 0){
+					all_motifs = DegenerateMotif(masks,motif,len,NC);
+					for(k=0;k<NC;k++){
+						strcpy((char *)(Index),all_motifs[k]); Index[len]='\0';
+						JSLG(tmp,tmpArray,Index); JSLG(occ,occArray,Index); JSLG(seq,seqArray,Index);
+						if(tmp != NULL ){
+							(*tmp)++; (*occ)++;
+						}else{
+							if(occ != NULL && seq != NULL){
+								(*occ)++; (*seq)++; 
+							}else{
+								JSLI(seq, seqArray, Index);   /* store string into array */
+								(*seq)++;
+								JSLI(occ, occArray,Index);   /* store string into array */
+								(*occ)++; 
+							}
+							JSLI(tmp, tmpArray,Index);   /* store string into array */
+							(*tmp)++;
+						}
+						safefree((void**)&all_motifs[k]); 		/* free array */
+					}
+					safefree((void**)&motif);
+					safefree((void**)&all_motifs); 		/* free array */
+				}
+			}
+		}
+		JSLFA(Rc_word, tmpArray);
+	}
+
+	/* Prints the motifs sorted lexicographically */
+	Index[0] = '\0';
+	JSLF(seq, seqArray, Index);	/* get first string */
+	while (seq != NULL) {
+		JSLG(occ, occArray, Index);	/* get first string */
+		if(occ != NULL) {
+			if((int)(*seq) >= K_OCC){
+				/*fprintf(stderr,"%s\t%d\t%d\n", Index,(int)(*occ),(int)(*seq));*/
+				fprintf(OUT,"%s\t%d\t%d\n", Index,(int)(*occ),(int)(*seq));
+			}
+		}
+		JSLN(seq, seqArray, Index);   /* get next string */
+	}
+	JSLFA(Rc_word, seqArray);		/* free array */
+	JSLFA(Rc_word, occArray);		/* free array */
+}
 
 
 int main(int argc,char **argv){ 

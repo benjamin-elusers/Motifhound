@@ -32,11 +32,11 @@ void* safecalloc(size_t num, size_t size) {
 
 void* saferealloc(void *ptr, size_t s) {
 /* realloc with exit on failed memory allocation */
-	void *newptr = realloc(ptr,s);
-	if(newptr == NULL) { 
-		fprintf(stderr, "Memory reallocation failed!\n");
-		exit(ENOMEM);    }
-	return newptr;
+  void *newptr = realloc(ptr,s);
+  if(newptr == NULL) { 
+    fprintf(stderr, "Memory reallocation failed!\n");
+    exit(ENOMEM);    }
+  return newptr;
 }
 
 void safefree(void** ptr){
