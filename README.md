@@ -33,8 +33,9 @@ MotifHound is an algorithm for the discovery of degenerate linear motifs encoded
 
 ### 1.  Download
 
-The original version of MotifHound (as of publication) is available from [Gdrive]([https://drive.google.com/drive/folders/1AJKMQAZy9UEbpcGYiWTXcVtRFf5mHcgb?usp=drive_link])
-You can download the orignal tar file [here]([https://github.com/benjamin-elusers/Motifhound/raw/main/archive/MotifHound_171013.tar.gz]). After downloading, the file needs to be decompressed:
+The original version of MotifHound (as of publication) is available from [Gdrive](https://drive.google.com/drive/folders/1AJKMQAZy9UEbpcGYiWTXcVtRFf5mHcgb?usp=drive_link)
+
+You can download the original tar file [here](https://github.com/benjamin-elusers/Motifhound/raw/main/archive/MotifHound_171013.tar.gz). After downloading, the file needs to be decompressed:
 
 > tar -xvzf MotifHound_171013.tar.gz
 > cd MotifHound/
@@ -42,7 +43,7 @@ You can download the orignal tar file [here]([https://github.com/benjamin-eluser
 The updated version is available on this current [GitHub repository]([https://github.com/benjamin-elusers/Motifhound]).
 
 ### 2. Third party libraries
-In order to work with S. cerevisiae and H. sapiens datasets, we also provide precomputed data on disorder, Pfam domains, evolution and function descriptions. These data are not required to run MotifHound but they are recommended to use it with its full potential. These data can be downloaded [here]([https://drive.google.com/file/d/1vRcIxc9KJxYCkOmj4xPVEQyG9otnvwf4/view?usp=drive_link]) and copied in the "data" directory of MotifHound.
+In order to work with S. cerevisiae and H. sapiens datasets, we also provide precomputed data on disorder, Pfam domains, evolution and function descriptions. These data are not required to run MotifHound but they are recommended to use it with its full potential. These data can be downloaded [here](https://drive.google.com/file/d/1vRcIxc9KJxYCkOmj4xPVEQyG9otnvwf4/view?usp=drive_link) and copied in the "data" directory of MotifHound.
 
 Importantly, MotifHound uses the following programs/libraries that need to be installed:
 "Judy arrays" is a C library that can be either installed with the following command on Ubuntu systems:
