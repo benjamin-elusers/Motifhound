@@ -180,12 +180,12 @@ int * Enumeration(int len, Matrix masks, int K_OCC, char firstletter, char lastl
                 (*seq)++;
               } else {
                 JSLI(seq, seqArray, Index); /* store string into array */
-                (*seq)++;
+                (*seq)=1;
                 JSLI(occ, occArray, Index); /* store string into array */
-                (*occ)++;
+                (*occ)=1;
               }
               JSLI(tmp, tmpArray, Index); /* store string into array */
-              (*tmp)++;
+              (*tmp)=1;
             }
             safefree((void**)&all_motifs[k]); /* free array */
           }

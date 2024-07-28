@@ -17,19 +17,40 @@ B="${DAT}/POST_pairs.fasta"
 N=$(grep -c ">" $B)
 
 for L in 8 12 16 20; do
-	X=$(((L-2)/2));
-	echo $L $X $n $N;
+	X=$((((L-2)/2)+1));
+	echo "============"
+	echo "L=$L X=$X n=$n N=$N "
+	echo "============"
+	
 	set=$(basename $S)
 	back=$(basename $B)
 	motif=${OUT}/${set##.fasta}.L${L}_X$X.motif 
 	scanned=${OUT}/${back##.fasta}.L${L}_X$X.scanned 
 	enriched=${OUT}/${set##.motif}.L${L}_X$X.enriched
-	echo "$BIN/MotifEnumeration.exe -f $S -o $motif -m $L -k 3  -a 'NT' -x 0 -y $X "
-	#$BIN/MotifEnumeration.exe -f $S -o $motif -m $L -k 3  -a 'NT' -x 0 -y $X
+
+	if [ -f $motif ]; then
+		echo "SKIPPED: ALREADY ENUMERATED MOTIFS"
+	else
+		echo "$BIN/MotifEnumeration.exe -f $S -o $motif -m $L -k 5  -a 'NT' -x 0 -y $X "
+		$BIN/MotifEnumeration.exe -f $S -o $motif -m $L -k 5  -a 'NT' -x 0 -y $X	
+	fi
+
+
+	if [ -f $scanned ];
+		echo "SKIPPED: ALREADY SCANNED MOTIFS"
+	elif [ ! -f $scanned ] && [ -f $motif ]; then
+		echo "$BIN/MotifScan.exe -e $motif -f $B -o $scanned -a 'NT' "
+		$BIN/MotifScan.exe -e $motif -f $B -o $scanned -a 'NT'
+	else 
+		echo "ERROR: REQUIRE MOTIF FILE IN SET"
+	fi
 	
-	echo "$BIN/MotifScan.exe -e $motif -f $B -o $scanned -a 'NT' "
-	#$BIN/MotifScan.exe -e $motif -f $B -o $scanned -a 'NT'
-	
-	echo "$BIN/MotifEnrichment.exe -s $motif -b $scanned -o $enriched -n $n -N $N"
-	$BIN/MotifEnrichment.exe -s $motif -b $scanned -o $enriched -n $n -N $N
+	if [ -f $enriched ]; then
+		echo "SKIPPED: ALREADY COMPUTED MOTIF ENRICHMENT"
+	elif [ ! -f $enriched ] && [ -f $scanned ] && [ -f $motif ]; then
+		echo "$BIN/MotifEnrichment.exe -s $motif -b $scanned -o $enriched -n $n -N $N"
+		$BIN/MotifEnrichment.exe -s $motif -b $scanned -o $enriched -n $n -N $N
+	else
+		echo "ERROR: REQUIRE MOTIF FILES IN BOTH SET AND BACKGROUND"
+	fi
 done

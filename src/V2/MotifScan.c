@@ -153,15 +153,15 @@ int MotifScan(char * alphabet, Pattern * pattern, Pvoid_t k_Array, Pvoid_t *m_Ar
               (*occ)++;
             } else {
               JSLI(tmp, tmpArray, Index);
-              (*tmp)++;
+              (*tmp)=1;
               if(occ != NULL && m != NULL) {
                 (*occ)++;
                 (*m)++;
               } else {
                 JSLI(m, *m_Array, Index);
                 JSLI(occ, occArray, Index);
-                (*m)++;
-                (*occ)++;
+                (*m)=1;
+                (*occ)=1;
               }
             }
           }
@@ -182,14 +182,14 @@ int MotifScan(char * alphabet, Pattern * pattern, Pvoid_t k_Array, Pvoid_t *m_Ar
     for(p2=0;p2<nletters;p2++) {
       last= alphabet[p2];
       Index[0] = '\0';
-      JSLF(m, *(m_Array), Index);  /* get first string */
+      JSLF(m, *(m_Array), Index);  
       while (m != NULL) {
         if( first == Index[0] && last == Index[pattern->len-1]){
           JSLG(occ,occArray,Index);
           nmotifs[0]++;
           fprintf(OUT,"%s\t%d\t%d\n", Index,(int)(*occ),(int)(*m));
         }
-        JSLN(m, *(m_Array), Index);   /* get next string */
+        JSLN(m, *(m_Array), Index);
       }
     }
   }
